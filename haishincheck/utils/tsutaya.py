@@ -12,7 +12,7 @@ def tsutaya_scraping(driver, title):
         input_title = title_convert(title)
         title_length = len(input_title)
         
-        page_url = 'https://movie-tsutaya.tsite.jp/netdvd/dvd/top.do?i=0&pT=0&sc_int=movie_cd_header_dvdtop&pT=2'
+        page_url = 'https://movie-tsutaya.tsite.jp/netdvd/dvd/top.do'
         driver.get(page_url)
         time.sleep(4)
 

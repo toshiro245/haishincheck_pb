@@ -12,7 +12,7 @@ def amazon_scraping(driver, title):
         input_title = title_convert(title)
         title_length = len(input_title)
 
-        url = "https://www.amazon.co.jp/gp/browse.html?node=2351649051&ref_=nav_em__aiv_vid_0_2_2_2"
+        url = "https://www.amazon.co.jp/Prime-Video/b?node=3535604051"
         driver.get(url)
         time.sleep(4)
 

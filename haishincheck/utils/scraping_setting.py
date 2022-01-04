@@ -9,7 +9,7 @@ def driver_setting():
     driver_path = '/app/.chromedriver/bin/chromedriver'
     # driver_path = '/Users/ToshiroTasaka/PythonPractice_VSCODE/20211221_HaishinCheck/tools/chromedriver'
     options = webdriver.ChromeOptions()
-    # options.add_argument('--headless')
+    options.add_argument('--headless')
     options.add_argument("--no-sandbox")
     options.add_experimental_option("excludeSwitches", ['enable-automation'])
     driver = webdriver.Chrome(
