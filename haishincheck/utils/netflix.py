@@ -64,7 +64,7 @@ def netflix_scraping(driver, title):
         # driver.get(page_url)
         time.sleep(4)
 
-        result = 'テストです'
+        result = 'テスト'
 
 
         # html = driver.page_source
