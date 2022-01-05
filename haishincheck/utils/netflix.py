@@ -47,8 +47,9 @@ def netflix_scraping(driver, title):
         # driver_wait = WebDriverWait(driver,10)
         # driver_wait.until(expected_conditions.visibility_of_element_located((By.XPATH, '/html/body/div[1]/div/div/div[1]/div[1]/div[2]/div/div/ul/li[1]/div/a/span'))).click()
         
-        profile_url = driver.find_element(By.CSS_SELECTOR, 'ul.choose-profile > li:first-of-type a').get_attribute('href')
-        driver.get(profile_url)
+        # profile_url = driver.find_element(By.CSS_SELECTOR, 'ul.choose-profile > li:first-of-type a').get_attribute('href')
+        driver.find_element(By.CSS_SELECTOR, 'ul.choose-profile > li:first-of-type > div').click()
+        # driver.get(profile_url)
         time.sleep(2)
 
         test = 'e'
