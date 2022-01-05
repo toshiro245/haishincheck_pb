@@ -20,7 +20,7 @@ def netflix_scraping(driver, title):
         
         base_url = "https://www.netflix.com/browse"
         driver.get(base_url)
-        time.sleep(3)
+        time.sleep(5)
 
         #ログイン
         login = driver.find_element(By.XPATH, '/html/body/div[1]/div/div[3]/div/div/div[1]/form/div[1]/div[1]/div/label/input')
@@ -35,9 +35,9 @@ def netflix_scraping(driver, title):
         time.sleep(2)
 
         #アカウントの選択
-        driver_wait = WebDriverWait(driver,10)
-        driver_wait.until(expected_conditions.visibility_of_element_located((By.XPATH, '/html/body/div[1]/div/div/div[1]/div[1]/div[2]/div/div/ul/li[1]/div/a/span'))).click()
-        time.sleep(2)
+        # driver_wait = WebDriverWait(driver,10)
+        # driver_wait.until(expected_conditions.visibility_of_element_located((By.XPATH, '/html/body/div[1]/div/div/div[1]/div[1]/div[2]/div/div/ul/li[1]/div/a/span'))).click()
+        # time.sleep(2)
 
         result = 'テスト'
 
