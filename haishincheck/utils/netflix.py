@@ -40,40 +40,43 @@ def netflix_scraping(driver, title):
         # driver_wait.until(expected_conditions.visibility_of_element_located((By.XPATH, '/html/body/div[1]/div/div/div[1]/div[1]/div[2]/div/div/ul/li[1]/div/a/span'))).click()
         
         driver.find_element(By.CSS_SELECTOR, 'ul.choose-profile > li:first-of-type span').click()
-        time.sleep(2)
+        time.sleep(3)
 
         page_url = f'https://www.netflix.com/search?q={title}'
         driver.get(page_url)
         time.sleep(4)
 
-        html = driver.page_source
-        soup = BeautifulSoup(html, 'lxml')
+        result = 'テスト'
 
-        works = soup.select('div.galleryContent div.ptrack-content > a')[:10]
-        for work in works:
-            work_title = work.get('aria-label')
-            cleaned_searched_title = title_convert(work_title)
+
+        # html = driver.page_source
+        # soup = BeautifulSoup(html, 'lxml')
+
+        # works = soup.select('div.galleryContent div.ptrack-content > a')[:10]
+        # for work in works:
+        #     work_title = work.get('aria-label')
+        #     cleaned_searched_title = title_convert(work_title)
             
-            if title_length <= 7:
-                # 完全一致しているか
-                if (input_title in cleaned_searched_title):
-                    true_flag = True
+        #     if title_length <= 7:
+        #         # 完全一致しているか
+        #         if (input_title in cleaned_searched_title):
+        #             true_flag = True
 
-            else:
-                # 70％以上一致しているか
-                title_length_70percent = int(round(title_length * 0.7, 0))
-                for initial, last in enumerate(range(title_length_70percent, title_length+1)):
-                    confirmed_title = input_title[initial:last]
-                    if (confirmed_title in cleaned_searched_title):
-                        true_flag = True
-                        break
+        #     else:
+        #         # 70％以上一致しているか
+        #         title_length_70percent = int(round(title_length * 0.7, 0))
+        #         for initial, last in enumerate(range(title_length_70percent, title_length+1)):
+        #             confirmed_title = input_title[initial:last]
+        #             if (confirmed_title in cleaned_searched_title):
+        #                 true_flag = True
+        #                 break
             
-            if true_flag:
-                result = '見放題'
-                break
+        #     if true_flag:
+        #         result = '見放題'
+        #         break
 
-        else:
-            result = 'なし'
+        # else:
+        #     result = 'なし'
     
     except:
         result = 'エラー'
