@@ -14,8 +14,8 @@ def driver_setting():
     options.add_argument('--disable-dev-shm-usage')
     options.add_experimental_option("excludeSwitches", ['enable-automation'])
     driver = webdriver.Chrome(
-        executable_path=driver_path,
-        # ChromeDriverManager().install(),
+        # executable_path=driver_path,
+        ChromeDriverManager().install(),
         options=options
     )
     driver.implicitly_wait(5)
