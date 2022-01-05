@@ -32,7 +32,8 @@ def netflix_scraping(driver, title):
         time.sleep(1)
 
         # driver.find_element(By.XPATH, '/html/body/div[1]/div/div[3]/div/div/div[1]/form/button').click()
-        # time.sleep(2)
+        driver.find_element(By.CSS_SELECTOR, 'form.login-form > button.login-button').click()
+        time.sleep(2)
 
         #アカウントの選択
         # driver_wait = WebDriverWait(driver,10)
