@@ -39,8 +39,8 @@ def netflix_scraping(driver, title):
         # driver_wait = WebDriverWait(driver,10)
         # driver_wait.until(expected_conditions.visibility_of_element_located((By.XPATH, '/html/body/div[1]/div/div/div[1]/div[1]/div[2]/div/div/ul/li[1]/div/a/span'))).click()
         
-        # driver.find_element(By.CSS_SELECTOR, 'ul.choose-profile > li:first-of-type span').click()
-        # time.sleep(2)
+        driver.find_element(By.CSS_SELECTOR, 'ul.choose-profile > li:first-of-type span').click()
+        time.sleep(2)
 
         result = 'テスト'
 
