@@ -41,7 +41,7 @@ def execute_scraping(request):
         # スクレイピングの関数実行
         driver = scraping_setting.driver_setting()
 
-        test = 'ooo0'
+        test = 'ooo'
         
         if service_num == 1:
             result = unext.unext_scraping(driver, title)
