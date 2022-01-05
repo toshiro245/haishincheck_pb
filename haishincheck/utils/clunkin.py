@@ -50,5 +50,6 @@ def ckunkin_scraping(driver, title):
     except:
         result = 'エラー'
     
-
+    
+    driver.quit()
     return result

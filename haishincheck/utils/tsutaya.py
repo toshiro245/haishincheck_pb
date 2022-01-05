@@ -62,4 +62,5 @@ def tsutaya_scraping(driver, title):
         result = 'エラー'
     
 
+    driver.quit()
     return result

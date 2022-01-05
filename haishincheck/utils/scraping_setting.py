@@ -23,6 +23,6 @@ def driver_setting():
 
 
 
-def driver_quit(driver):
+# def driver_quit(driver):
     # sleep(2)
-    driver.quit()
+    # driver.quit()

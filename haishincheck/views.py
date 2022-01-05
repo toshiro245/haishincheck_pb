@@ -69,7 +69,7 @@ def execute_scraping(request):
             result = clunkin.ckunkin_scraping(driver, title)
 
 
-        scraping_setting.driver_quit(driver)
+        # scraping_setting.driver_quit(driver)
 
         if service_num not in range(1, 13):
             get_signal = None

@@ -57,5 +57,6 @@ def unext_scraping(driver, title):
         result = 'エラー'
 
 
+    driver.quit()
     return result
 

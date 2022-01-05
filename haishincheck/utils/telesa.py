@@ -63,4 +63,6 @@ def telesa_scraping(driver, title):
     except:
         result = 'エラー'
 
+
+    driver.quit()
     return result

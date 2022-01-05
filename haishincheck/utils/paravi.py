@@ -78,4 +78,5 @@ def paravi_scraping(driver, title):
         result = 'エラー'
 
 
+    driver.quit()
     return result
