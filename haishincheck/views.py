@@ -40,6 +40,8 @@ def execute_scraping(request):
 
         # スクレイピングの関数実行
         driver = scraping_setting.driver_setting()
+
+        test = 'ooo'
         
         if service_num == 1:
             result = unext.unext_scraping(driver, title)
@@ -60,7 +62,7 @@ def execute_scraping(request):
         elif service_num == 9:
             result = telesa.telesa_scraping(driver, title)
         elif service_num == 10:
-            result = netflix.netflix_scraping(driver, title)
+            result, test = netflix.netflix_scraping(driver, title)
         elif service_num == 11:
             result = tsutaya.tsutaya_scraping(driver, title)
         elif service_num == 12:
@@ -79,6 +81,7 @@ def execute_scraping(request):
             'signal': get_signal,
             'service_num': service_num,
             'result': result,
+            'test': test,
         }
 
         return JsonResponse(context)

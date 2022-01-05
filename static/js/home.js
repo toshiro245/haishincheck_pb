@@ -83,6 +83,9 @@ $(function() {
                     let getSignal = response.signal
                     let serviceNum = response.service_num
                     let result = response.result
+                    console.log('きた')
+                    let test = response.test
+                    console.log(test)
 
                     switch (serviceNum){
                         case 1:

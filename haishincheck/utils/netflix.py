@@ -22,18 +22,26 @@ def netflix_scraping(driver, title):
         driver.get(base_url)
         time.sleep(4)
 
+        test = 'a'
+
         #ログイン
         login = driver.find_element(By.XPATH, '/html/body/div[1]/div/div[3]/div/div/div[1]/form/div[1]/div[1]/div/label/input')
         login.send_keys(Id)
         time.sleep(1)
 
+        test = 'b'
+
         login = driver.find_element(By.XPATH, '/html/body/div[1]/div/div[3]/div/div/div[1]/form/div[2]/div[1]/div/label/input')
         login.send_keys(Pass)
         time.sleep(1)
 
+        test = 'c'
+
         # driver.find_element(By.XPATH, '/html/body/div[1]/div/div[3]/div/div/div[1]/form/button').click()
         driver.find_element(By.CSS_SELECTOR, 'form.login-form > button.login-button').click()
         time.sleep(2)
+
+        test = 'd'
 
         #アカウントの選択
         # driver_wait = WebDriverWait(driver,10)
@@ -42,10 +50,15 @@ def netflix_scraping(driver, title):
         driver.find_element(By.CSS_SELECTOR, 'ul.choose-profile > li:first-of-type span').click()
         time.sleep(2)
 
+        test = 'e'
+
         driver.find_element(By.CSS_SELECTOR, 'div.searchBox > button.searchTab').click()
+        test = 'f'
         time.sleep(1)
         elem_search_btn = driver.find_element(By.CSS_SELECTOR, '#searchInput')
+        test = 'g'
         elem_search_btn.send_keys(title)
+        test = 'h'
 
         # page_url = f'https://www.netflix.com/search?q={title}'
         # driver.get(page_url)
@@ -88,4 +101,4 @@ def netflix_scraping(driver, title):
 
 
     driver.quit()
-    return result
+    return result, test
