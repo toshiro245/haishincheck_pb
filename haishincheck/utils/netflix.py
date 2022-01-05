@@ -40,10 +40,15 @@ def netflix_scraping(driver, title):
         # driver_wait.until(expected_conditions.visibility_of_element_located((By.XPATH, '/html/body/div[1]/div/div/div[1]/div[1]/div[2]/div/div/ul/li[1]/div/a/span'))).click()
         
         driver.find_element(By.CSS_SELECTOR, 'ul.choose-profile > li:first-of-type span').click()
-        time.sleep(3)
+        time.sleep(2)
 
-        page_url = f'https://www.netflix.com/search?q={title}'
-        driver.get(page_url)
+        driver.find_element(By.CSS_SELECTOR, 'div.searchBox > button.searchTab').click()
+        time.sleep(1)
+        elem_search_btn = driver.find_element(By.CSS_SELECTOR, '#searchInput')
+        elem_search_btn.send_keys(title)
+
+        # page_url = f'https://www.netflix.com/search?q={title}'
+        # driver.get(page_url)
         time.sleep(4)
 
         result = 'テスト'
