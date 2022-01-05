@@ -20,28 +20,28 @@ def netflix_scraping(driver, title):
         
         base_url = "https://www.netflix.com/browse"
         driver.get(base_url)
-        time.sleep(3)
+        time.sleep(4)
 
         #ログイン
         login = driver.find_element(By.XPATH, '/html/body/div[1]/div/div[3]/div/div/div[1]/form/div[1]/div[1]/div/label/input')
         login.send_keys(Id)
-        time.sleep(1)
+        time.sleep(2)
 
         login = driver.find_element(By.XPATH, '/html/body/div[1]/div/div[3]/div/div/div[1]/form/div[2]/div[1]/div/label/input')
         login.send_keys(Pass)
-        time.sleep(1)
+        time.sleep(2)
 
         driver.find_element(By.XPATH, '/html/body/div[1]/div/div[3]/div/div/div[1]/form/button').click()
-        time.sleep(1)
+        time.sleep(2)
 
         #アカウントの選択
         driver_wait = WebDriverWait(driver,10)
         driver_wait.until(expected_conditions.visibility_of_element_located((By.XPATH, '/html/body/div[1]/div/div/div[1]/div[1]/div[2]/div/div/ul/li[1]/div/a/span'))).click()
-        time.sleep(1)
+        time.sleep(2)
 
         page_url = f'https://www.netflix.com/search?q={title}'
         driver.get(page_url)
-        time.sleep(3)
+        time.sleep(4)
 
         html = driver.page_source
         soup = BeautifulSoup(html, 'lxml')
