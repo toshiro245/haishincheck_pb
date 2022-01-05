@@ -17,7 +17,7 @@ def tsutaya_scraping(driver, title):
         
         page_url = f'https://movie-tsutaya.tsite.jp/netdvd/dvd/searchDvdHmo.do?k={encode_title}'
         driver.get(page_url)
-        time.sleep(4)
+        time.sleep(6)
 
         # search
         # search_bar = driver.find_element(By.CSS_SELECTOR, 'div.input-group > input')
