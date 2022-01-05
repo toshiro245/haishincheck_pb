@@ -39,7 +39,7 @@ def netflix_scraping(driver, title):
 
         # driver.find_element(By.XPATH, '/html/body/div[1]/div/div[3]/div/div/div[1]/form/button').click()
         driver.find_element(By.CSS_SELECTOR, 'form.login-form > button.login-button').click()
-        time.sleep(2)
+        time.sleep(5)
 
         test = 'd'
 
