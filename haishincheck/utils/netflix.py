@@ -20,16 +20,16 @@ def netflix_scraping(driver, title):
         
         base_url = "https://www.netflix.com/browse"
         driver.get(base_url)
-        time.sleep(4)
+        time.sleep(3)
 
         #ログイン
         login = driver.find_element(By.XPATH, '/html/body/div[1]/div/div[3]/div/div/div[1]/form/div[1]/div[1]/div/label/input')
         login.send_keys(Id)
-        time.sleep(2)
+        time.sleep(1)
 
         login = driver.find_element(By.XPATH, '/html/body/div[1]/div/div[3]/div/div/div[1]/form/div[2]/div[1]/div/label/input')
         login.send_keys(Pass)
-        time.sleep(2)
+        time.sleep(1)
 
         driver.find_element(By.XPATH, '/html/body/div[1]/div/div[3]/div/div/div[1]/form/button').click()
         time.sleep(2)

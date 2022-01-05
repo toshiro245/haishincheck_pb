@@ -7,59 +7,59 @@ from haishincheck.utils.title_setting import title_convert
 
 
 def hulu_scraping(driver, title):
-    # try:
+    try:
 
-    result = 'なし'
-    input_title = title_convert(title)
+        result = 'なし'
+        input_title = title_convert(title)
 
-    url = f'https://www.hulu.jp/search?q={title}'
-    driver.get(url)
-    time.sleep(4)
+        url = f'https://www.hulu.jp/search?q={title}'
+        driver.get(url)
+        time.sleep(4)
 
-    search_works_free = driver.find_elements(By.CSS_SELECTOR, "div.gallery-content div.slider-item > div.title-card > div.sliderRefocus")[:10]
-    search_works_rental = driver.find_elements(By.CSS_SELECTOR, "div.canvas-row div.slider-item > div.title-card > div.sliderRefocus")[:10]
+        search_works_free = driver.find_elements(By.CSS_SELECTOR, "div.gallery-content div.slider-item > div.title-card > div.sliderRefocus")[:10]
+        search_works_rental = driver.find_elements(By.CSS_SELECTOR, "div.canvas-row div.slider-item > div.title-card > div.sliderRefocus")[:10]
 
-    for search_work_free in search_works_free:
-        work_title = search_work_free.get_attribute('aria-label')
-        cleaned_searched_title = title_convert(work_title)
-        title_length = len(input_title)
+        for search_work_free in search_works_free:
+            work_title = search_work_free.get_attribute('aria-label')
+            cleaned_searched_title = title_convert(work_title)
+            title_length = len(input_title)
 
-        if title_length <= 7:
-            # 完全一致しているか
-            if input_title in cleaned_searched_title:
-                result = '見放題'
-            
-        else:
-            # 70％以上一致しているか
-            title_length_70percent = int(round(title_length * 0.7, 0))
-            for initial, last in enumerate(range(title_length_70percent, title_length+1)):
-                confirmed_title = input_title[initial:last]
-                if confirmed_title in cleaned_searched_title:
+            if title_length <= 7:
+                # 完全一致しているか
+                if input_title in cleaned_searched_title:
                     result = '見放題'
-                    break
+                
+            else:
+                # 70％以上一致しているか
+                title_length_70percent = int(round(title_length * 0.7, 0))
+                for initial, last in enumerate(range(title_length_70percent, title_length+1)):
+                    confirmed_title = input_title[initial:last]
+                    if confirmed_title in cleaned_searched_title:
+                        result = '見放題'
+                        break
 
 
-    for search_work_rental in search_works_rental:
-        work_title = search_work_rental.get_attribute('aria-label')
-        cleaned_searched_title = title_convert(work_title)
-        title_length = len(input_title)
+        for search_work_rental in search_works_rental:
+            work_title = search_work_rental.get_attribute('aria-label')
+            cleaned_searched_title = title_convert(work_title)
+            title_length = len(input_title)
 
-        if title_length <= 7:
-            # 完全一致しているか
-            if input_title in cleaned_searched_title:
-                result = 'レンタル'
-            
-        else:
-            # 70％以上一致しているか
-            title_length_70percent = int(round(title_length * 0.7, 0))
-            for initial, last in enumerate(range(title_length_70percent, title_length+1)):
-                confirmed_title = input_title[initial:last]
-                if confirmed_title in cleaned_searched_title:
+            if title_length <= 7:
+                # 完全一致しているか
+                if input_title in cleaned_searched_title:
                     result = 'レンタル'
-                    break
+                
+            else:
+                # 70％以上一致しているか
+                title_length_70percent = int(round(title_length * 0.7, 0))
+                for initial, last in enumerate(range(title_length_70percent, title_length+1)):
+                    confirmed_title = input_title[initial:last]
+                    if confirmed_title in cleaned_searched_title:
+                        result = 'レンタル'
+                        break
 
-    # except:
-    #     result = 'エラー'
+    except:
+        result = 'エラー'
 
 
     return result

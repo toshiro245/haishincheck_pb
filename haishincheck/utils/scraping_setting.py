@@ -11,6 +11,7 @@ def driver_setting():
     options = webdriver.ChromeOptions()
     options.add_argument('--headless')
     options.add_argument("--no-sandbox")
+    options.add_argument('--disable-dev-shm-usage')
     options.add_experimental_option("excludeSwitches", ['enable-automation'])
     driver = webdriver.Chrome(
         executable_path=driver_path,
@@ -23,5 +24,5 @@ def driver_setting():
 
 
 def driver_quit(driver):
-    sleep(2)
+    # sleep(2)
     driver.quit()
