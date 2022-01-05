@@ -20,7 +20,7 @@ def netflix_scraping(driver, title):
         
         base_url = "https://www.netflix.com/browse"
         driver.get(base_url)
-        time.sleep(4)
+        time.sleep(3)
 
         test = 'a'
 
@@ -39,7 +39,7 @@ def netflix_scraping(driver, title):
 
         # driver.find_element(By.XPATH, '/html/body/div[1]/div/div[3]/div/div/div[1]/form/button').click()
         driver.find_element(By.CSS_SELECTOR, 'form.login-form > button.login-button').click()
-        time.sleep(5)
+        time.sleep(3)
 
         test = 'd'
 
@@ -47,7 +47,8 @@ def netflix_scraping(driver, title):
         # driver_wait = WebDriverWait(driver,10)
         # driver_wait.until(expected_conditions.visibility_of_element_located((By.XPATH, '/html/body/div[1]/div/div/div[1]/div[1]/div[2]/div/div/ul/li[1]/div/a/span'))).click()
         
-        driver.find_element(By.CSS_SELECTOR, 'ul.choose-profile > li:first-of-type span').click()
+        profile_url = driver.find_element(By.CSS_SELECTOR, 'ul.choose-profile > li:first-of-type a').get_attribute('href')
+        driver.get(profile_url)
         time.sleep(2)
 
         test = 'e'
