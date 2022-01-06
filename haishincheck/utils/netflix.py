@@ -55,8 +55,8 @@ def netflix_scraping(driver, title):
     # driver_wait.until(expected_conditions.visibility_of_element_located((By.CSS_SELECTOR, 'ul.choose-profile > li:first-of-type > div'))).click()
     
     # profile_url = driver.find_element(By.CSS_SELECTOR, 'ul.choose-profile > li:first-of-type a').get_attribute('href')
-    target = driver.find_element(By.CSS_SELECTOR, 'ul.choose-profile > li:first-of-type > div > a > span')
-    target.click()
+    # target = driver.find_element(By.CSS_SELECTOR, 'ul.choose-profile > li:first-of-type > div > a > span')
+    # target.click()
     # driver.get(profile_url)
     time.sleep(2)
 
@@ -70,10 +70,10 @@ def netflix_scraping(driver, title):
     # elem_search_btn.send_keys(title)
     # test = 'h'
 
-    page_url = f'https://www.netflix.com/search?q={title}'
-    driver.get(page_url)
-    time.sleep(4)
-    test = 'f'
+    # page_url = f'https://www.netflix.com/search?q={title}'
+    # driver.get(page_url)
+    # time.sleep(4)
+    # test = 'f'
 
     result = 'テスト'
 
