@@ -17,6 +17,8 @@ def netflix_scraping(driver, title):
     true_flag = False
     input_title = title_convert(title)
     title_length = len(input_title)
+
+    driver.delete_all_cookies()
     
     # base_url = "https://www.netflix.com/browse"
     base_url = "https://www.netflix.com/jp/login"
