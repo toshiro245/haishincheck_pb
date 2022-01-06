@@ -24,7 +24,8 @@ class HomeView(View):
 
         context = {
             'title': title,
-            'signal': 1,
+            # 'signal': 1,
+            'signal': 10,
         }
         return render(request, 'home.html', context)
 
@@ -42,7 +43,8 @@ def execute_scraping(request):
         driver = scraping_setting.driver_setting()
 
         test = 'ooo'
-        
+        html = 'ok'
+
         if service_num == 1:
             result = unext.unext_scraping(driver, title)
         elif service_num == 2:
@@ -62,7 +64,7 @@ def execute_scraping(request):
         elif service_num == 9:
             result = telesa.telesa_scraping(driver, title)
         elif service_num == 10:
-            result, test = netflix.netflix_scraping(driver, title)
+            result, test, html = netflix.netflix_scraping(driver, title)
         elif service_num == 11:
             result = tsutaya.tsutaya_scraping(driver, title)
         elif service_num == 12:
@@ -82,6 +84,7 @@ def execute_scraping(request):
             'service_num': service_num,
             'result': result,
             'test': test,
+            'html': html,
         }
 
         return JsonResponse(context)

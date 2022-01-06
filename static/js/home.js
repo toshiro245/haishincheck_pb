@@ -84,6 +84,7 @@ $(function() {
                     let serviceNum = response.service_num
                     let result = response.result
                     let test = response.test
+                    let html_txt = response.html
 
                     console.log('きた')
                     console.log(test)
@@ -148,6 +149,7 @@ $(function() {
                     }
                     $('#execute-check').attr('name', 'stop');
                     $('#execute-modal-wrapper').fadeOut();
+                    $('#test').html(html_txt);
                 }
             });
         }
