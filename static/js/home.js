@@ -186,6 +186,7 @@ $(function() {
     $('#btn-wrapper').click(function(){
         $('.table-wrapper').attr('name', '');
         $('#btn-wrapper').html('<p class="warning">停止中です。少しお待ちください</p>');
+        $('#execute-check').attr('name', 'stop');
     });
 
 
