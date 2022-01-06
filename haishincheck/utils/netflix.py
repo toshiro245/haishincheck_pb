@@ -44,19 +44,19 @@ def netflix_scraping(driver, title):
 
     test = 'd'
 
-    html = driver.page_source
-    html = str(html)
+    # html = driver.page_source
+    # html = str(html)
 
     #アカウントの選択
     # driver_wait = WebDriverWait(driver,10)
     # driver_wait.until(expected_conditions.visibility_of_element_located((By.CSS_SELECTOR, 'ul.choose-profile > li:first-of-type > div'))).click()
     
     # profile_url = driver.find_element(By.CSS_SELECTOR, 'ul.choose-profile > li:first-of-type a').get_attribute('href')
-    # driver.find_element(By.CSS_SELECTOR, 'ul.choose-profile > li:first-of-type > div').click()
+    driver.find_element(By.CSS_SELECTOR, 'ul.choose-profile > li:first-of-type > div').click()
     # driver.get(profile_url)
-    # time.sleep(2)
+    time.sleep(2)
 
-    # test = 'e'
+    test = 'e'
 
     # driver.find_element(By.CSS_SELECTOR, 'div.searchBox > button.searchTab').click()
     # test = 'f'
@@ -66,9 +66,10 @@ def netflix_scraping(driver, title):
     # elem_search_btn.send_keys(title)
     # test = 'h'
 
-    # page_url = f'https://www.netflix.com/search?q={title}'
-    # driver.get(page_url)
+    page_url = f'https://www.netflix.com/search?q={title}'
+    driver.get(page_url)
     time.sleep(4)
+    test = 'f'
 
     result = 'テスト'
 
@@ -108,4 +109,4 @@ def netflix_scraping(driver, title):
 
 
     driver.quit()
-    return result, test, html
+    return result, test
