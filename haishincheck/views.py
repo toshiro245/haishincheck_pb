@@ -64,7 +64,7 @@ def execute_scraping(request):
         elif service_num == 9:
             result = telesa.telesa_scraping(driver, title)
         elif service_num == 10:
-            result, test = netflix.netflix_scraping(driver, title)
+            result, test, html = netflix.netflix_scraping(driver, title)
         elif service_num == 11:
             result = tsutaya.tsutaya_scraping(driver, title)
         elif service_num == 12:
