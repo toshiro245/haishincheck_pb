@@ -18,7 +18,8 @@ def netflix_scraping(driver, title):
     input_title = title_convert(title)
     title_length = len(input_title)
     
-    base_url = "https://www.netflix.com/browse"
+    # base_url = "https://www.netflix.com/browse"
+    base_url = "https://www.netflix.com/jp/login"
     driver.get(base_url)
     time.sleep(3)
 
