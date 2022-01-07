@@ -49,7 +49,7 @@ def musicjp_scraping(driver, title):
 
 
     except:
-        result = 'エラー'
+        result = '取得失敗'
     
 
     driver.quit()

@@ -59,7 +59,7 @@ def hulu_scraping(driver, title):
                         break
 
     except:
-        result = 'エラー'
+        result = '取得失敗'
 
 
     driver.quit()

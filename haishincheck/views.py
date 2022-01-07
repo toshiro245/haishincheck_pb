@@ -7,7 +7,7 @@ from django.views import View
 
 from haishincheck.utils import (
     clunkin, scraping_setting, unext, fod, danime, hulu, paravi, amazon,
-    dtv, abema, telesa, netflix, tsutaya, musicjp, 
+    dtv, abema, telesa, tsutaya, musicjp, 
 )
 
 
@@ -24,8 +24,7 @@ class HomeView(View):
 
         context = {
             'title': title,
-            # 'signal': 1,
-            'signal': 10,
+            'signal': 1,
         }
         return render(request, 'home.html', context)
 
@@ -41,9 +40,6 @@ def execute_scraping(request):
 
         # スクレイピングの関数実行
         driver = scraping_setting.driver_setting()
-
-        test = 'ooo'
-        html = 'ok'
 
         if service_num == 1:
             result = unext.unext_scraping(driver, title)
@@ -64,18 +60,14 @@ def execute_scraping(request):
         elif service_num == 9:
             result = telesa.telesa_scraping(driver, title)
         elif service_num == 10:
-            result, test, html = netflix.netflix_scraping(driver, title)
-        elif service_num == 11:
             result = tsutaya.tsutaya_scraping(driver, title)
-        elif service_num == 12:
+        elif service_num == 11:
             result = musicjp.musicjp_scraping(driver, title)
-        elif service_num == 13:
+        elif service_num == 12:
             result = clunkin.ckunkin_scraping(driver, title)
 
 
-        # scraping_setting.driver_quit(driver)
-
-        if service_num not in range(1, 13):
+        if service_num not in range(1, 12):
             get_signal = None
             
 
@@ -83,8 +75,6 @@ def execute_scraping(request):
             'signal': get_signal,
             'service_num': service_num,
             'result': result,
-            'test': test,
-            'html': html,
         }
 
         return JsonResponse(context)

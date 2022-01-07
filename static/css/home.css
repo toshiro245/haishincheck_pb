@@ -178,6 +178,14 @@ h3.execute-modal-comment {
     cursor: pointer;
 }
 
+/* アラート */
+#alert {
+    padding-left: 3.5rem;
+    font-size: 20px;
+    color: rgba(237, 40, 76);
+    margin-bottom: 1.5rem;
+}
+
 
 
 /* レスポンシブデザイン */
@@ -229,6 +237,12 @@ th {
 td {
     font-size: 13px;
     padding: 8px 3px;
+}
+
+/* アラート */
+#alert {
+    font-size: 18px;
+    margin-bottom: 1.2rem;
 }
 
 
@@ -335,6 +349,10 @@ div.table-wrapper {
     display: table;
 }
 
+.result-table4-smf {
+    display: table;
+}
+
 th {
     font-size: 5px;
     /* width: 50px; */
@@ -346,6 +364,13 @@ td {
     font-size: 5px;
     /* font-size: 1px; */
     padding: 4px 2px;
+}
+
+/* アラート */
+#alert {
+    padding-left: 1.5rem;
+    font-size: 13px;
+    margin-bottom: 1.0rem;
 }
 
 /* モーダル */

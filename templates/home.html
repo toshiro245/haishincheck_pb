@@ -21,7 +21,7 @@
     <header>
         <div class="header-container">
             <div class="header-left">
-                <a>haishin check</a>
+                <a href="{% url 'haishin-check:home' %}">haishin check</a>
                 <img class="header-icon" height="85" src="{% static 'images/header_icon.png' %}">
             </div>
         </div>
@@ -35,6 +35,8 @@
             <input type="submit" value="&#xf002" class="fas">  
         </form>
 
+        <div id="alert"></div>
+
         <div id='search-title' class='search-title' name="{{ title }}">
             作品タイトル&nbsp;:&nbsp;{{ title }}
         </div>
@@ -47,8 +49,7 @@
                     <th>dアニメストア</th>
                     <th>Hulu</th>
                     <th>Amazon</th>
-                    <th>Paravi</th>
-                    <th>dTV</th>
+                    <th>Paravi</th>   
                 </tr>
                 <tr>
                     <td class='unext'>-</td>
@@ -57,23 +58,23 @@
                     <td class='hulu'>-</td>
                     <td class='amazon'>-</td>
                     <td class='paravi'>-</td>
-                    <td class='dtv'>-</td>
+                    
                 </tr>
             </table>
 
             <table border="1" class="result-table2" cellspacing="0" cellpadding="0">
                 <tr>
+                    <th>dTV</th>
                     <th>ABEMA</th>
                     <th>TELESA</th>
-                    <th>Netflix</th>
                     <th>TSUTAYA DISCAS</th>
                     <th>music.jp</th>
                     <th>クランクイン</th>
                 </tr>
                 <tr>
+                    <td class='dtv'>-</td>
                     <td class='abema'>-</td>
                     <td class='telesa'>-</td>
-                    <td class='netflix'>-</td>
                     <td class='tsutaya'>-</td>
                     <td class='music'>-</td>
                     <td class='clunkin'>-</td>
@@ -85,12 +86,9 @@
                 <tr>
                     <th>U-NEXT</th>
                     <th>FOD</th>
-                    <th>dアニメストア</th>
-                    <th>Hulu</th>
-                    
+                    <th>dアニメストア</th>    
                 </tr>
                 <tr>
-                    <td class='unext'>-</td>
                     <td class='fod'>-</td>
                     <td class='danime'>-</td>
                     <td class='hulu'>-</td>
@@ -99,27 +97,27 @@
 
             <table border="1" class="result-table2-smf" cellspacing="0" cellpadding="0">
                 <tr>
+                    <th>Hulu</th>
                     <th>Amazon</th>
                     <th>Paravi</th>
-                    <th>dTV</th>
                 </tr>
                 <tr>
+                    <td class='unext'>-</td>
                     <td class='amazon'>-</td>
                     <td class='paravi'>-</td>
-                    <td class='dtv'>-</td>
                 </tr>
             </table>
 
             <table border="1" class="result-table3-smf" cellspacing="0" cellpadding="0">
                 <tr>
+                    <th>dTV</th>
                     <th>ABEMA</th>
                     <th>TELESA</th>
-                    <th>Netflix</th>
                 </tr>
                 <tr>
+                    <td class='dtv'>-</td>
                     <td class='abema'>-</td>
                     <td class='telesa'>-</td>
-                    <td class='netflix'>-</td>
                 </tr>
             </table>
 
@@ -138,11 +136,6 @@
 
 
         </div>
-
-        <div id="test">test</div>
-
-
-        
 
         <div id='execute-check' name="stop"></div>
         <input name="csrfToken" value="{{ csrf_token }}" type="hidden">

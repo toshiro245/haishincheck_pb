@@ -7,8 +7,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 
 def driver_setting():
     driver_path = '/app/.chromedriver/bin/chromedriver'
-    # driver_path = '/Users/ToshiroTasaka/PythonPractice_VSCODE/20211221_HaishinCheck/tools/chromedriver'
-    options = webdriver.ChromeOptions()
+    options = webdriver.ChromeOptions() 
     options.add_argument('--headless')
     options.add_argument("--no-sandbox")
     options.add_argument('--disable-dev-shm-usage')
@@ -19,10 +18,5 @@ def driver_setting():
         options=options
     )
     driver.implicitly_wait(5)
+    driver.set_window_size(950, 800)
     return driver
-
-
-
-# def driver_quit(driver):
-    # sleep(2)
-    # driver.quit()

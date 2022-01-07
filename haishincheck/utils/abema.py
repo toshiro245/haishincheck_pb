@@ -52,7 +52,7 @@ def abema_scraping(driver, title):
             result = 'なし'
 
     except:
-        result = 'エラー'
+        result = '取得失敗'
 
 
     driver.quit()

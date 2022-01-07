@@ -46,15 +46,12 @@ $(function() {
                     service_name = 'TELESA';
                     break;
                 case '10':
-                    service_name = 'Netflix';
-                    break;
-                case '11':
                     service_name = 'TSUTAYA';
                     break;
-                case '12':
+                case '11':
                     service_name = 'music.jp';
                     break;
-                case '13':
+                case '12':
                     service_name = 'クランクイン'; 
                     break;
             };
@@ -83,11 +80,6 @@ $(function() {
                     let getSignal = response.signal
                     let serviceNum = response.service_num
                     let result = response.result
-                    let test = response.test
-                    let html_txt = response.html
-
-                    console.log('きた')
-                    console.log(test)
 
                     switch (serviceNum){
                         case 1:
@@ -127,18 +119,14 @@ $(function() {
                             break;
 
                         case 10:
-                            ReflectingResult('netflix', result);
-                            break;
-
-                        case 11:
                             ReflectingResult('tsutaya', result);
                             break;
 
-                        case 12:
+                        case 11:
                             ReflectingResult('music', result);
                             break;
 
-                        case 13:
+                        case 12:
                             ReflectingResult('clunkin', result);
                             break;
                     }
@@ -149,8 +137,13 @@ $(function() {
                     }
                     $('#execute-check').attr('name', 'stop');
                     $('#execute-modal-wrapper').fadeOut();
-                    $('#test').html(html_txt);
-                }
+                },
+                error: function() {
+                    $('#alert').text("予期せぬエラーが発生しました。再度実行してください。");
+                    $('.table-wrapper').attr('name', '');
+                    $('#execute-check').attr('name', 'stop');
+                    $('#execute-modal-wrapper').fadeOut();
+                },
             });
         }
     };
