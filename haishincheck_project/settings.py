@@ -135,7 +135,7 @@ except ImportError:
 
 
 if not DEBUG:
-    DEBUG = True
+    # DEBUG = True
     SECRET_KEY = os.environ['SECRET_KEY']
 
     import django_heroku
