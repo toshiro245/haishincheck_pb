@@ -11,7 +11,6 @@ def driver_setting():
     options.add_argument('--headless')
     options.add_argument("--no-sandbox")
     options.add_argument('--disable-dev-shm-usage')
-    options.add_argument('--user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110')
     options.add_experimental_option("excludeSwitches", ['enable-automation'])
     
     driver = webdriver.Chrome(
