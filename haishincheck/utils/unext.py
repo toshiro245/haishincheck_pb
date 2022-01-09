@@ -59,7 +59,8 @@ def unext_scraping(driver, title):
     except:
         result = '取得失敗'
 
+    html = str(html)
 
     driver.quit()
-    return result, url
+    return result, url, html
 

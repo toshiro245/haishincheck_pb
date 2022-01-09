@@ -38,17 +38,19 @@ def execute_scraping(request):
         get_signal += 1
         service_num = get_signal - 1
 
+        html = 'ok'
+
         # スクレイピングの関数実行
         driver = scraping_setting.driver_setting()
 
         if service_num == 1:
-            result, page_url = unext.unext_scraping(driver, title)
+            result, page_url, html = unext.unext_scraping(driver, title)
         elif service_num == 2:
             result, page_url = fod.fod_scraping(driver, title)
         elif service_num == 3:
             result, page_url = danime.danime_scraping(driver, title)
         elif service_num == 4:
-            result, page_url = hulu.hulu_scraping(driver, title)
+            result, page_url, html = hulu.hulu_scraping(driver, title)
         elif service_num == 5:
             result, page_url = amazon.amazon_scraping(driver, title)
         elif service_num == 6:
@@ -76,6 +78,7 @@ def execute_scraping(request):
             'service_num': service_num,
             'result': result,
             'page_url': page_url,
+            'html': html,
         }
 
         return JsonResponse(context)
