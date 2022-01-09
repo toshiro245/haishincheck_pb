@@ -10,10 +10,11 @@ def abema_scraping(driver, title):
     try:
         input_title = title_convert(title)
         
-        page_url = f"https://abema.tv/search?q={title}"
+        # page_url = f"https://abema.tv/search?q={title}"
+        page_url = f"https://abema.tv/"
         driver.get(page_url)
-        time.sleep(7)
-        driver.find_elements(By.CSS_SELECTOR, 'li.com-search-SearchResultsVideoSection__list-item')
+        time.sleep(5)
+        # driver.find_elements(By.CSS_SELECTOR, 'li.com-search-SearchResultsVideoSection__list-item')
 
         html = driver.page_source
         soup = BeautifulSoup(html, 'lxml')
