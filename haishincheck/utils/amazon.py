@@ -37,6 +37,12 @@ def amazon_scraping(driver, title):
                             
                         elif plan == 'または、プライム会員は￥0':
                             result = '見放題'
+
+                        elif plan == 'Or ¥0 with a Prime membership':
+                            result = '見放題'
+
+                        elif plan == '¥0 with a Prime membership':
+                            result = '見放題'
                             
                         else:
                             result = 'レンタル'
