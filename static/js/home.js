@@ -1,19 +1,7 @@
 $(function() {
     
     // スクレイピングをいサービスずつ実行するためのコード
-    // var INTERVAL_TIME = 3000;
     var INTERVAL_TIME = 3000;
-    // ///////////////////////////////////////////
-    // let service_name;
-    // let val_signal;
-    // let execute_check;
-    // let title_name;
-    // let getSignal;
-    // let serviceNum;
-    // let Result;
-    // let pageUrl;
-    // let current_signal;
-    // /////////////////////////////////////////
 
     (function execute_scrapings() {
         AutoScraping();
@@ -23,11 +11,8 @@ $(function() {
     function AutoScraping() {
         let service_name;
         let val_signal = $('.table-wrapper').attr('name');
-        // val_signal = $('.table-wrapper').attr('name');
         let execute_check = $('#execute-check').attr('name');
-        // execute_check = $('#execute-check').attr('name');
         let title_name = $('#search-title').attr('name');
-        // title_name = $('#search-title').attr('name');
         
     
         if(val_signal && execute_check==='stop') {
@@ -93,13 +78,9 @@ $(function() {
                 dataType: 'json',
                 success: function(response) {
                     let getSignal = response.signal
-                    // getSignal = response.signal
                     let serviceNum = response.service_num
-                    // serviceNum = response.service_num
                     let result = response.result
-                    // Result = response.result
                     let page_url = response.page_url
-                    // pageUrl = response.page_url
                     let html_txt = response.html
 
                     switch (serviceNum){
@@ -158,7 +139,6 @@ $(function() {
                     }
                     $('#execute-check').attr('name', 'stop');
                     $('#execute-modal-wrapper').fadeOut();
-                    $('#test').html(html_txt);
                 },
                 error: function() {
                     $('#alert').text("予期せぬエラーが発生しました。再度実行してください。");
@@ -171,23 +151,6 @@ $(function() {
     };
 
     function ReflectingResult(service_name, pageurl, result) {
-        // var serviceurl_list = {
-        //     'unext': 'https://video.unext.jp/',
-        //     'fod': 'https://fod.fujitv.co.jp/',
-        //     'danime': 'https://anime.dmkt-sp.jp/animestore/tp_pc',
-        //     'hulu': 'https://www.hulu.jp/',
-        //     'amazon': 'https://www.amazon.co.jp/Prime-Video/b?node=3535604051',
-        //     'paravi': 'https://www.paravi.jp/',
-        //     'dtv': 'https://video.dmkt-sp.jp/?referrer=https%3A%2F%2Fwww.google.com%2F',
-        //     'abema': 'https://abema.tv/',
-        //     'telesa': 'https://navi.telasa.jp/',
-        //     'netflix': 'https://www.netflix.com/jp/login?nextpage=https%3A%2F%2Fwww.netflix.com%2Fbrowse',
-        //     'tsutaya': 'https://movie-tsutaya.tsite.jp/netdvd/dvd/top.do',
-        //     'music': 'https://music-book.jp/video/',
-        //     'clunkin': 'https://video.crank-in.net/',
-        // };
-
-        // let service_url = serviceurl_list[service_name]
 
         if(result==='レンタル'||result==='見放題'){
             $(`.${service_name}`).html(`<a href="${pageurl}" target="_blank" rel="noopener noreferrer">${result}</a>`);

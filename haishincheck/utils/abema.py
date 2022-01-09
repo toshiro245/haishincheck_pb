@@ -10,20 +10,16 @@ def abema_scraping(driver, title):
     try:
         input_title = title_convert(title)
         
-        
-        # homepage_url = f"https://abema.tv/"
-        # driver.get(homepage_url)
         page_url = f"https://abema.tv/search?q={title}"
         driver.get(page_url)
         time.sleep(3)
-        driver.find_element(By.CSS_SELECTOR, 'div.c-application-GDPRContainer__check_area > label').click()
-        time.sleep(1)
-        driver.find_element(By.CSS_SELECTOR, 'div.c-application-GDPRContainer__button_area > button').click()
-        time.sleep(3)
-
-        # page_url = f"https://abema.tv/search?q={title}"
-        # driver.get(page_url)
-        # time.sleep(3)
+        try:
+            driver.find_element(By.CSS_SELECTOR, 'div.c-application-GDPRContainer__check_area > label').click()
+            time.sleep(1)
+            driver.find_element(By.CSS_SELECTOR, 'div.c-application-GDPRContainer__button_area > button').click()
+            time.sleep(3)
+        except:
+            pass
 
         driver.find_elements(By.CSS_SELECTOR, 'li.com-search-SearchResultsVideoSection__list-item')
 
@@ -52,4 +48,4 @@ def abema_scraping(driver, title):
 
     html = str(html)
     driver.quit()
-    return result, page_url, html
+    return result, page_url
