@@ -39,6 +39,7 @@ def execute_scraping(request):
         service_num = get_signal - 1
 
         # html = 'test'
+        plan ='test'
 
         # スクレイピングの関数実行
         driver = scraping_setting.driver_setting()
@@ -52,7 +53,7 @@ def execute_scraping(request):
         elif service_num == 4:
             result, page_url, html = hulu.hulu_scraping(driver, title)
         elif service_num == 5:
-            result, page_url = amazon.amazon_scraping(driver, title)
+            result, page_url, plan = amazon.amazon_scraping(driver, title)
         elif service_num == 6:
             result, page_url = paravi.paravi_scraping(driver, title)
         elif service_num == 7:
@@ -79,6 +80,7 @@ def execute_scraping(request):
             'result': result,
             'page_url': page_url,
             # 'html': html,
+            'plan': plan,
         }
 
         return JsonResponse(context)

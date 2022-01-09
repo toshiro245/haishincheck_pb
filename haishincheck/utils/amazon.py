@@ -52,7 +52,7 @@ def amazon_scraping(driver, title):
 
         
     driver.quit()
-    return result, url
+    return result, url, plan
 
         
         
