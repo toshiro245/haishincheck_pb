@@ -14,6 +14,11 @@ def abema_scraping(driver, title):
         page_url = f"https://abema.tv/"
         driver.get(page_url)
         time.sleep(5)
+        driver.find_element(By.CSS_SELECTOR, 'div.c-application-GDPRContainer__check_area > label').click()
+        time.sleep(2)
+        driver.find_element(By.CSS_SELECTOR, 'div.c-application-GDPRContainer__button_area > button').click()
+        time.sleep(5)
+
         # driver.find_elements(By.CSS_SELECTOR, 'li.com-search-SearchResultsVideoSection__list-item')
 
         html = driver.page_source
