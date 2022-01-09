@@ -12,7 +12,7 @@ def abema_scraping(driver, title):
         
         page_url = f"https://abema.tv/search?q={title}"
         driver.get(page_url)
-        time.sleep(4)
+        time.sleep(7)
         driver.find_elements(By.CSS_SELECTOR, 'li.com-search-SearchResultsVideoSection__list-item')
 
         html = driver.page_source
