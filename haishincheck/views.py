@@ -38,7 +38,7 @@ def execute_scraping(request):
         get_signal += 1
         service_num = get_signal - 1
 
-        html = 'ok'
+        # html = 'test'
 
         # スクレイピングの関数実行
         driver = scraping_setting.driver_setting()
@@ -78,7 +78,7 @@ def execute_scraping(request):
             'service_num': service_num,
             'result': result,
             'page_url': page_url,
-            'html': html,
+            # 'html': html,
         }
 
         return JsonResponse(context)

@@ -139,7 +139,7 @@ $(function() {
                     }
                     $('#execute-check').attr('name', 'stop');
                     $('#execute-modal-wrapper').fadeOut();
-                    $('#test').html(html_txt);
+                    // $('#test').html(html_txt);
                 },
                 error: function() {
                     $('#alert').text("予期せぬエラーが発生しました。再度実行してください。");
