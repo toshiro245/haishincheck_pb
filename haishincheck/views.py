@@ -24,7 +24,7 @@ class HomeView(View):
 
         context = {
             'title': title,
-            'signal': 1,
+            'signal': 8,
         }
         return render(request, 'home.html', context)
 
@@ -37,6 +37,8 @@ def execute_scraping(request):
         
         get_signal += 1
         service_num = get_signal - 1
+
+        html = 'ok'
 
         # スクレイピングの関数実行
         driver = scraping_setting.driver_setting()
@@ -56,7 +58,7 @@ def execute_scraping(request):
         elif service_num == 7:
             result, page_url = dtv.dtv_scraping(driver, title)
         elif service_num == 8:
-            result, page_url = abema.abema_scraping(driver, title)
+            result, page_url, html = abema.abema_scraping(driver, title)
         elif service_num == 9:
             result, page_url = telesa.telesa_scraping(driver, title)
         elif service_num == 10:
@@ -76,6 +78,7 @@ def execute_scraping(request):
             'service_num': service_num,
             'result': result,
             'page_url': page_url,
+            'html': html
         }
 
         return JsonResponse(context)

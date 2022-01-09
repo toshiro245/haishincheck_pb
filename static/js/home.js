@@ -100,6 +100,7 @@ $(function() {
                     // Result = response.result
                     let page_url = response.page_url
                     // pageUrl = response.page_url
+                    let html_txt = response.html
 
                     switch (serviceNum){
                         case 1:
@@ -157,6 +158,7 @@ $(function() {
                     }
                     $('#execute-check').attr('name', 'stop');
                     $('#execute-modal-wrapper').fadeOut();
+                    $('#test').html(html_txt);
                 },
                 error: function() {
                     $('#alert').text("予期せぬエラーが発生しました。再度実行してください。");
