@@ -53,7 +53,7 @@ def execute_scraping(request):
         elif service_num == 4:
             result, page_url = hulu.hulu_scraping(driver, title)
         elif service_num == 5:
-            result, page_url, plan = amazon.amazon_scraping(driver, title)
+            result, page_url = amazon.amazon_scraping(driver, title)
         elif service_num == 6:
             result, page_url = paravi.paravi_scraping(driver, title)
         elif service_num == 7:
