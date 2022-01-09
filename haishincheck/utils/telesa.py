@@ -10,15 +10,14 @@ def telesa_scraping(driver, title):
     try:
         true_flag = False
         input_title = title_convert(title)
-        title_length = len(input_title)
         
         page_url = f'https://www.telasa.jp/search?q={title}'
         driver.get(page_url)
-        time.sleep(5)
+        time.sleep(4)
+        driver.find_elements(By.CSS_SELECTOR, 'section.vdcarousel')
 
         html = driver.page_source
         soup = BeautifulSoup(html, 'lxml')
-
 
         # 検索ヒットした作品を全件取得
         works_blocks = soup.select('section.vdcarousel')
@@ -35,20 +34,8 @@ def telesa_scraping(driver, title):
             for work in works:
                 work_title = work.select_one('div.vdcard__content > div.vdcard__name ').text
                 cleaned_searched_title = title_convert(work_title)
-
-                if title_length <= 7:
-                    # 完全一致しているか
-                    if (input_title in cleaned_searched_title):
-                        true_flag = True
-            
-                else:
-                    # 70％以上一致しているか
-                    title_length_70percent = int(round(title_length * 0.7, 0))
-                    for initial, last in enumerate(range(title_length_70percent, title_length+1)):
-                        confirmed_title = input_title[initial:last]
-                        if (confirmed_title in cleaned_searched_title):
-                            true_flag = True
-                            break
+                if (input_title in cleaned_searched_title):
+                    true_flag = True
                 
                 if true_flag:
                     break
@@ -65,4 +52,4 @@ def telesa_scraping(driver, title):
 
 
     driver.quit()
-    return result
+    return result, page_url

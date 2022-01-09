@@ -9,24 +9,13 @@ from haishincheck.utils.title_setting import title_convert
 
 def tsutaya_scraping(driver, title):
     try:
-        true_flag = False
         input_title = title_convert(title)
-        title_length = len(input_title)
-
         encode_title = urllib.parse.quote(title, encoding='shift-jis')
         
         page_url = f'https://movie-tsutaya.tsite.jp/netdvd/dvd/searchDvdHmo.do?k={encode_title}'
         driver.get(page_url)
-        time.sleep(6)
-
-        # search
-        # search_bar = driver.find_element(By.CSS_SELECTOR, 'div.input-group > input')
-        # time.sleep(2)
-        # search_bar.send_keys(title)
-        # time.sleep(2)
-        # driver.find_element(By.CSS_SELECTOR, 'div.input-group > div.input-group-append').click()
-        # time.sleep(4)
-
+        time.sleep(5)
+        driver.find_elements(By.CSS_SELECTOR, '#container-product-search > div.card-box-searchdvd')
 
         html = driver.page_source
         soup = BeautifulSoup(html, 'lxml')
@@ -36,21 +25,7 @@ def tsutaya_scraping(driver, title):
         for work in works:
             work_title = work.select_one('div.card-body-searchdvd > a').text
             cleaned_searched_title = title_convert(work_title)
-            if title_length <= 7:
-                    # 完全一致しているか
-                    if (input_title in cleaned_searched_title):
-                        true_flag = True
-            
-            else:
-                # 70％以上一致しているか
-                title_length_70percent = int(round(title_length * 0.7, 0))
-                for initial, last in enumerate(range(title_length_70percent, title_length+1)):
-                    confirmed_title = input_title[initial:last]
-                    if (confirmed_title in cleaned_searched_title):
-                        true_flag = True
-                        break
-
-            if true_flag:
+            if (input_title in cleaned_searched_title):
                 result = 'レンタル'
                 break
 
@@ -63,4 +38,4 @@ def tsutaya_scraping(driver, title):
     
 
     driver.quit()
-    return result
+    return result, page_url

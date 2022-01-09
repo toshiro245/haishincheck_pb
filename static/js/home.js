@@ -1,7 +1,19 @@
 $(function() {
     
     // スクレイピングをいサービスずつ実行するためのコード
+    // var INTERVAL_TIME = 3000;
     var INTERVAL_TIME = 3000;
+    // ///////////////////////////////////////////
+    // let service_name;
+    // let val_signal;
+    // let execute_check;
+    // let title_name;
+    // let getSignal;
+    // let serviceNum;
+    // let Result;
+    // let pageUrl;
+    // let current_signal;
+    // /////////////////////////////////////////
 
     (function execute_scrapings() {
         AutoScraping();
@@ -9,10 +21,13 @@ $(function() {
     }());
 
     function AutoScraping() {
-        var service_name;
-        var val_signal = $('.table-wrapper').attr('name');
-        var execute_check = $('#execute-check').attr('name');
-        var title_name = $('#search-title').attr('name');
+        let service_name;
+        let val_signal = $('.table-wrapper').attr('name');
+        // val_signal = $('.table-wrapper').attr('name');
+        let execute_check = $('#execute-check').attr('name');
+        // execute_check = $('#execute-check').attr('name');
+        let title_name = $('#search-title').attr('name');
+        // title_name = $('#search-title').attr('name');
         
     
         if(val_signal && execute_check==='stop') {
@@ -78,60 +93,65 @@ $(function() {
                 dataType: 'json',
                 success: function(response) {
                     let getSignal = response.signal
+                    // getSignal = response.signal
                     let serviceNum = response.service_num
+                    // serviceNum = response.service_num
                     let result = response.result
+                    // Result = response.result
+                    let page_url = response.page_url
+                    // pageUrl = response.page_url
 
                     switch (serviceNum){
                         case 1:
-                            ReflectingResult('unext', result);
+                            ReflectingResult('unext', page_url, result);
                             break;
 
                         case 2:
-                            ReflectingResult('fod', result);
+                            ReflectingResult('fod', page_url, result);
                             break;
 
                         case 3:
-                            ReflectingResult('danime', result);
+                            ReflectingResult('danime', page_url, result);
                             break;
 
                         case 4:
-                            ReflectingResult('hulu', result);
+                            ReflectingResult('hulu', page_url, result);
                             break;
 
                         case 5:
-                            ReflectingResult('amazon', result);
+                            ReflectingResult('amazon', page_url, result);
                             break;
 
                         case 6:
-                            ReflectingResult('paravi', result);
+                            ReflectingResult('paravi', page_url, result);
                             break;
 
                         case 7:
-                            ReflectingResult('dtv', result);
+                            ReflectingResult('dtv', page_url, result);
                             break;
 
                         case 8:
-                            ReflectingResult('abema', result);
+                            ReflectingResult('abema', page_url, result);
                             break;
 
                         case 9:
-                            ReflectingResult('telesa', result);
+                            ReflectingResult('telesa', page_url, result);
                             break;
 
                         case 10:
-                            ReflectingResult('tsutaya', result);
+                            ReflectingResult('tsutaya', page_url, result);
                             break;
 
                         case 11:
-                            ReflectingResult('music', result);
+                            ReflectingResult('music', page_url, result);
                             break;
 
                         case 12:
-                            ReflectingResult('clunkin', result);
+                            ReflectingResult('clunkin', page_url, result);
                             break;
                     }
 
-                    var current_signal = $('.table-wrapper').attr('name');
+                    let current_signal = $('.table-wrapper').attr('name');
                     if(current_signal) {
                         $('.table-wrapper').attr('name', getSignal);
                     }
@@ -148,27 +168,27 @@ $(function() {
         }
     };
 
-    function ReflectingResult(service_name, result) {
-        var serviceurl_list = {
-            'unext': 'https://video.unext.jp/',
-            'fod': 'https://fod.fujitv.co.jp/',
-            'danime': 'https://anime.dmkt-sp.jp/animestore/tp_pc',
-            'hulu': 'https://www.hulu.jp/',
-            'amazon': 'https://www.amazon.co.jp/Prime-Video/b?node=3535604051',
-            'paravi': 'https://www.paravi.jp/',
-            'dtv': 'https://video.dmkt-sp.jp/?referrer=https%3A%2F%2Fwww.google.com%2F',
-            'abema': 'https://abema.tv/',
-            'telesa': 'https://navi.telasa.jp/',
-            'netflix': 'https://www.netflix.com/jp/login?nextpage=https%3A%2F%2Fwww.netflix.com%2Fbrowse',
-            'tsutaya': 'https://movie-tsutaya.tsite.jp/netdvd/dvd/top.do',
-            'music': 'https://music-book.jp/video/',
-            'clunkin': 'https://video.crank-in.net/',
-        };
+    function ReflectingResult(service_name, pageurl, result) {
+        // var serviceurl_list = {
+        //     'unext': 'https://video.unext.jp/',
+        //     'fod': 'https://fod.fujitv.co.jp/',
+        //     'danime': 'https://anime.dmkt-sp.jp/animestore/tp_pc',
+        //     'hulu': 'https://www.hulu.jp/',
+        //     'amazon': 'https://www.amazon.co.jp/Prime-Video/b?node=3535604051',
+        //     'paravi': 'https://www.paravi.jp/',
+        //     'dtv': 'https://video.dmkt-sp.jp/?referrer=https%3A%2F%2Fwww.google.com%2F',
+        //     'abema': 'https://abema.tv/',
+        //     'telesa': 'https://navi.telasa.jp/',
+        //     'netflix': 'https://www.netflix.com/jp/login?nextpage=https%3A%2F%2Fwww.netflix.com%2Fbrowse',
+        //     'tsutaya': 'https://movie-tsutaya.tsite.jp/netdvd/dvd/top.do',
+        //     'music': 'https://music-book.jp/video/',
+        //     'clunkin': 'https://video.crank-in.net/',
+        // };
 
-        var service_url = serviceurl_list[service_name]
+        // let service_url = serviceurl_list[service_name]
 
         if(result==='レンタル'||result==='見放題'){
-            $(`.${service_name}`).html(`<a href="${service_url}" target="_blank" rel="noopener noreferrer">${result}</a>`);
+            $(`.${service_name}`).html(`<a href="${pageurl}" target="_blank" rel="noopener noreferrer">${result}</a>`);
         }else{
             $(`.${service_name}`).html(result);
         };

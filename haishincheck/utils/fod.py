@@ -19,7 +19,6 @@ def fod_scraping(driver, title):
         work_wrapper = driver.find_element(By.XPATH, '//section[h1[text()="検索結果"]]')
         works = work_wrapper.find_elements(By.CSS_SELECTOR, 'li.sw-Lineup_Item')
 
-        true_flag = False
         work_url_list = []
         work_title_list = []
 
@@ -33,23 +32,8 @@ def fod_scraping(driver, title):
         for work_url, work_title in zip(work_url_list, work_title_list):
             
             cleaned_searched_title = title_convert(work_title)
-            title_length = len(input_title)
             
-            if title_length <= 7:
-                # 完全一致しているか
-                if input_title in cleaned_searched_title:
-                    true_flag = True
-            
-            else:
-                # 70％以上一致しているか
-                title_length_70percent = int(round(title_length * 0.7, 0))
-                for initial, last in enumerate(range(title_length_70percent, title_length+1)):
-                    confirmed_title = input_title[initial:last]
-                    if confirmed_title in cleaned_searched_title:
-                        true_flag = True
-                        break
-
-            if true_flag:
+            if input_title in cleaned_searched_title:
                 driver.get(work_url)
                 time.sleep(4)
 
@@ -77,5 +61,5 @@ def fod_scraping(driver, title):
 
 
     driver.quit()
-    return result
+    return result, url
 

@@ -8,13 +8,12 @@ from haishincheck.utils.title_setting import title_convert
 
 def amazon_scraping(driver, title):
     try:
-        true_flag = False
         input_title = title_convert(title)
-        title_length = len(input_title)
 
         url = f"https://www.amazon.co.jp/s?k={title}&i=instant-video"
         driver.get(url)
         time.sleep(4)
+        driver.find_elements(By.CSS_SELECTOR, 'div.s-result-item > div.sg-col-inner')
 
         html = driver.page_source
         soup = BeautifulSoup(html, 'lxml')
@@ -28,24 +27,8 @@ def amazon_scraping(driver, title):
             if genre == 'Prime Video':
                 # タイトル検証アルゴリズム
                 cleaned_searched_title = title_convert(work_title)
-                
-                if title_length <= 7:
-                    # 完全一致しているか
-                    if (input_title in cleaned_searched_title):
-                        true_flag = True
-                
-                else:
-                    # 70％以上一致しているか
-                    title_length_70percent = int(round(title_length * 0.7, 0))
-                    for initial, last in enumerate(range(title_length_70percent, title_length+1)):
-                        confirmed_title = input_title[initial:last]
-                        if (confirmed_title in cleaned_searched_title):
-                            true_flag = True
-                            break
 
-
-                # レンタルかどうか
-                if true_flag:
+                if (input_title in cleaned_searched_title):
                     rental_or_free = searched_work.select_one(f'div.a-section > div.a-spacing-top-mini')
                     if rental_or_free:
                         plan = rental_or_free.text
@@ -69,7 +52,7 @@ def amazon_scraping(driver, title):
 
         
     driver.quit()
-    return result
+    return result, url
 
         
         

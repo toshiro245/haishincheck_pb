@@ -17,6 +17,6 @@ def driver_setting():
         # ChromeDriverManager().install(),
         options=options
     )
-    driver.implicitly_wait(5)
+    driver.implicitly_wait(7)
     driver.set_window_size(950, 800)
     return driver

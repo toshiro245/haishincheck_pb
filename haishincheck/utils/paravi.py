@@ -8,12 +8,11 @@ from haishincheck.utils.title_setting import title_convert
 
 def paravi_scraping(driver, title):
     try:
-        true_flag = False
         input_title = title_convert(title)
         
         page_url = f'https://www.paravi.jp/search?q={title}'
         driver.get(page_url)
-        time.sleep(3)
+        time.sleep(4)
 
 
         # 検索でヒットした上位10件を取得
@@ -23,26 +22,12 @@ def paravi_scraping(driver, title):
         for work in works:
             work_title = work.find_element(By.CSS_SELECTOR, 'h3.title-card-title').text
             cleaned_searched_title = title_convert(work_title)
-            title_length = len(input_title)
-            
-            if title_length <= 7:
-                # 完全一致しているか
-                if (input_title in cleaned_searched_title) and ('【無料・予告】' not in work_title) and ('【予告】' not in work_title):
-                    true_flag = True
-
-            else:
-                # 70％以上一致しているか
-                title_length_70percent = int(round(title_length * 0.7, 0))
-                for initial, last in enumerate(range(title_length_70percent, title_length+1)):
-                    confirmed_title = input_title[initial:last]
-                    if (confirmed_title in cleaned_searched_title) and ('【無料・予告】' not in work_title) and ('【予告】' not in work_title):
-                        true_flag = True
-                        break
-            
-            
-            if true_flag:
+            if (input_title in cleaned_searched_title) and ('【無料・予告】' not in work_title) and ('【予告】' not in work_title):
                 work.click()
                 time.sleep(3)
+ 
+                driver.find_elements(By.CSS_SELECTOR, 'div.watch-info')
+                driver.find_elements(By.CSS_SELECTOR, 'div.title-overview-content')
 
                 html = driver.page_source
                 soup = BeautifulSoup(html, 'lxml')
@@ -79,4 +64,4 @@ def paravi_scraping(driver, title):
 
 
     driver.quit()
-    return result
+    return result, page_url
