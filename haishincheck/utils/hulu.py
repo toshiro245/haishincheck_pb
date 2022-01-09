@@ -14,7 +14,7 @@ def hulu_scraping(driver, title):
         url = f'https://www.hulu.jp/search?q={title}'
         driver.get(url)
         time.sleep(4)
-        html = driver.page_source
+        # html = driver.page_source
 
         search_works_free = driver.find_elements(By.CSS_SELECTOR, "div.gallery-content div.slider-item > div.title-card > div.sliderRefocus")[:10]
         search_works_rental = driver.find_elements(By.CSS_SELECTOR, "div.canvas-row div.slider-item > div.title-card > div.sliderRefocus")[:10]
@@ -35,8 +35,8 @@ def hulu_scraping(driver, title):
     except:
         result = '取得失敗'
 
-    html = str(html)
+    # html = str(html)
     driver.quit()
-    return result, url, html
+    return result, url
 
 
