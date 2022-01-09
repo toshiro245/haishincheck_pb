@@ -81,7 +81,7 @@ $(function() {
                     let serviceNum = response.service_num
                     let result = response.result
                     let page_url = response.page_url
-                    let html_txt = response.html
+                    // let html_txt = response.html
 
                     switch (serviceNum){
                         case 1:
