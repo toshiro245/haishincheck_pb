@@ -47,7 +47,11 @@ def amazon_scraping(driver, title):
                         else:
                             result = 'レンタル'
                     else:
-                        result = 'レンタル'
+                        rental_or_none = searched_work.select_one('div.a-section > div.a-spacing-top-micro span.a-size-small')
+                        if rental_or_none:
+                            result = 'なし'
+                        else:
+                            result = 'レンタル'
                     break
             
         else:
